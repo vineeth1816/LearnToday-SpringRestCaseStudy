@@ -37,7 +37,7 @@ public class StudentController {
 			inserted=studentDao.doEnroll(student);
 		}
 		catch(RuntimeException e) {
-			return new ResponseEntity<Object>("Not iinserted",HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<Object>("Not inserted",HttpStatus.BAD_REQUEST);
 		}
 		
 			return new ResponseEntity<Object>(student,HttpStatus.CREATED);
