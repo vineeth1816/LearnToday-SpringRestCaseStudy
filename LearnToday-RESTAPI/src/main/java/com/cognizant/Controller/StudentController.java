@@ -30,20 +30,21 @@ public class StudentController {
 		return new ResponseEntity<List<Course>>(allCourses,HttpStatus.OK);
 	}
 	
-//	@PostMapping("/api/Student")
-//	public ResponseEntity<Object> postStudent(@RequestBody Student student){
-//		boolean inserted;
-//		
-//			inserted=studentDao.doEnroll(student);
-//		
-//		
-//		if(inserted)
-//			return new ResponseEntity<Object>(student,HttpStatus.CREATED);
-//		else
-//			return new ResponseEntity<Object>("Not iinserted",HttpStatus.BAD_REQUEST);
-//	
-//		
-//	}
+	@PostMapping("/api/Student")
+	public ResponseEntity<Object> postStudent(@RequestBody Student student){
+		boolean inserted;
+		try {
+			inserted=studentDao.doEnroll(student);
+		}
+		catch(RuntimeException e) {
+			return new ResponseEntity<Object>("Not iinserted",HttpStatus.BAD_REQUEST);
+		}
+		
+			return new ResponseEntity<Object>(student,HttpStatus.CREATED);
+		
+		
+		
+	}
 	
 	@DeleteMapping("/api/Student/{EnrollmentId}")
 	public ResponseEntity<Object> deleteStudentEnrollment(@PathVariable int EnrollmentId){

@@ -37,20 +37,15 @@ public class StudentDao {
 		return courseList;
 	}
 	
-	public boolean doEnroll(Student student) {
-		System.out.println( student.getEnrollmentId());
-		System.out.println(student.getStudentId());
-		System.out.println(student.getCourseId());
-	
+	public boolean doEnroll(Student student) throws RuntimeException{
+	try {
 		int flag=jdbcTemplate.update("insert into Student values(?,?,?)", student.getEnrollmentId(),student.getStudentId(),student.getCourseId());
+	}
+	catch(RuntimeException e) {
+		throw e;
+	}
 		
-		if(flag>0)
 			return true;
-		else {
-			return false;
-		}
-	
-		
 		
 		
 	}
